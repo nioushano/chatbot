@@ -1,0 +1,57 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: greet and goodbye
+  steps:
+  - user: |
+      goodmorning
+    intent: greet
+  - action: utter_greet
+  - user: |
+      Thankyou bye
+    intent: goodbye
+  - action: utter_goodbye
+
+
+- story: greet and order
+  steps:
+  - user: |
+      hello there
+    intent: greet
+  - action: utter_greet
+  - user: |
+       I want to order a cake
+    intent: gorder
+  - action: utter_getordersize
+  - user: |
+      I want 6 inches
+    intent: size
+  - action: utter_getordertaste
+  - user: |
+       I prefer chocolate cake
+    intent: tastepick
+  - action: utter_confirmation
+  - action: utter_getdate
+  - user: |
+       I want it for Sunday
+    intent: datepick
+  - action: utter_finish
+
+
+
+
+- story: say goodbye
+  steps:
+  - user: |
+      Thankyou bye
+    intent: goodbye
+  - action: utter_goodbye
+
+#- story: bot challenge
+#  steps:
+#  - user: |
+#      are you a bot?
+#    intent: botchallenge
+#  - action: utter_botchallenge
+

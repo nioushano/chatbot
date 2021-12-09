@@ -1,0 +1,25 @@
+version: "3.0"
+stories:
+- story: greet and goodbye (./tests/test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: goodbye
+  - action: utter_goodbye  # predicted: action_default_fallback after action_unlikely_intent
+- story: greet and order (./tests/test_stories.yml)
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: gorder  # predicted: order: I want to order a cake
+  - action: utter_getordersize  # predicted: action_default_fallback
+  - intent: size  # predicted: size: I want [6](size) inches
+  - action: utter_getordertaste
+  - intent: tastepick  # predicted: tastepick: I prefer [chocolate](taste) cake
+  - action: utter_confirmation  # predicted: action_default_fallback
+  - action: utter_getdate
+  - intent: datepick  # predicted: datepick: I want it for [Sunday](date)
+  - action: utter_finish  # predicted: action_default_fallback
+- story: say goodbye (./tests/test_stories.yml)
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye  # predicted: action_default_fallback after action_unlikely_intent
